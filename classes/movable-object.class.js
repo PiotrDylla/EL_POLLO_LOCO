@@ -8,7 +8,21 @@ class MovableObject {
     currentImage = 0;
     speed = 0.15;
     otherDirection = false;
+    speedY = 0;
+    acceleration = 2.5; //fall speed of Pepe
 
+    applyGravity() {
+        setInterval(() => {
+            if ( this.isAboveGround()) {
+            this.y -= this.speedY; //fall down because - 
+            this.speedY -= this.acceleration; // speed fall down
+            }
+        },1000 / 25)
+    }
+
+    isAboveGround() { //if Pepe on
+        return this.y < 150;
+    }
 
 //loadImage('img/test.png)
     loadImage(path) {
